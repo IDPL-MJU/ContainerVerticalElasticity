@@ -16,6 +16,7 @@ public class ModifyMemLimit extends Thread{
 				memLimit = (int) (Resource.dockerMemoryLimit[i] / (1024 *1024));
 		        try{
 		            // BufferedWriter 와 FileWriter를 조합하여 사용 (속도 향상)
+			    // Note that output directory information should be appropriately changed if needed.
 		            fw = new BufferedWriter(new FileWriter("/home/hadoop/usage/adaptive/" + Resource.dockerList[i] + "_memUsage", true));
 		            text = String.valueOf(Resource.dockerMemoryUsage[i]);
 		            // 파일안에 문자열 쓰기
@@ -25,6 +26,7 @@ public class ModifyMemLimit extends Thread{
 		            // 객체 닫기
 		            fw.close();
 		            
+			    // Note that output directory information should be appropriately changed if needed.
 		            fw = new BufferedWriter(new FileWriter("/home/hadoop/usage/adaptive/" + Resource.dockerList[i] + "_memLimit", true));
 		            text = String.valueOf(memLimit);
 		            // 파일안에 문자열 쓰기
