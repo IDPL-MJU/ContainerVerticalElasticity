@@ -20,13 +20,15 @@ public class ModifyCPULimit extends Thread{
 //				cpuLimit = (double)Resource.dockerCPULimit[i] / 100;
 		        try{
 		            // BufferedWriter 와 FileWriter를 조합하여 사용 (속도 향상)
+			    // Note that output directory information should be appropriately changed if needed.
 		            fw = new BufferedWriter(new FileWriter("/home/hadoop/usage/adaptive/" + Resource.dockerList[i] + "_cpuUsage", true));
 		            text = String.valueOf(Resource.dockerCPUUsage[i]);
 		            // 파일안에 문자열 쓰기
 		            fw.write(text + "\r\n");
 		            fw.flush();
 		            fw.close();
-	
+				
+			    // Note that output directory information should be appropriately changed if needed.
 		            fw = new BufferedWriter(new FileWriter("/home/hadoop/usage/adaptive/" + Resource.dockerList[i] + "_cpuLimit", true));
 		            text = String.valueOf(cpuLimit);
 		            // 파일안에 문자열 쓰기
